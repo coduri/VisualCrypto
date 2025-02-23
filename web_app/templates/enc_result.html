@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption Result - VisualCrypto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/result_style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icon.svg') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Encryption Result</h1>
+        <div class="image-container">
+            {% for share_url, download_url in zip(share_urls, download_urls) %}
+            <div>
+                <h2>Share {{ loop.index }}</h2>
+                <img src="{{ share_url }}" alt="Share {{ loop.index }}">
+                <a class="button" href="{{ download_url }}" download>Download Share {{ loop.index }}</a>
+            </div>
+            {% endfor %}
+        </div>
+        <a class="button back-button" href="/">Back to Home</a>
+    </div>
+</body>
+</html>

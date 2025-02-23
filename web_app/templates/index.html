@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisualCrypto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icon.svg') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>VisualCrypto</h1>
+
+        <form id="cryptoForm" action="/process" method="post" enctype="multipart/form-data">
+            <label for="algorithm">Select Algorithm:</label>
+            <select id="algorithm" name="algorithm" required>
+                <!-- The options in this <select> are dynamically populated via JavaScript -->
+            </select>
+
+            <!-- Information Box for Algorithm Descriptions -->
+            <div id="infoBox" class="info-box" style="display: none;">
+                <p id="infoMessage">
+                    <!-- Dynamically populated via JavaScript -->
+                </p>
+                <div id="infoLinksContainer" style="display: none;">
+                    <!-- Dynamically populated via JavaScript -->
+                </div>
+            </div>
+
+            <label for="operation">Select Operation:</label>
+            <select name="operation" id="operation" required>
+                <option value="encryption">Encryption</option>
+                <option value="decryption">Decryption</option>
+            </select>
+
+            <!-- Here eventual additional requirements will be added via JavaScript -->
+
+            <div id="uploadArea">
+                <label>Upload Image(s):</label>
+                <div id="input_images" class="file-inputs">
+                    <!-- The <input type="file"> elements are inserted dynamically via JavaScript -->
+                </div>
+                <small id="fileHint">For encryption, upload one image.</small>
+            </div>
+            <button type="submit">Run</button>
+        </form>
+
+        <div id="loader" style="display: none;">
+            <div class="spinner"></div>
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <script>
+        // Load the list of available algorithms inside the <select> and show the description of the first one
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/api/algorithm_list')
+                .then(response => response.json())
+                .then(data => {
+                    // console.log("Algorithms received:", data.algorithms);
+
+                    const algorithmSelect = document.getElementById("algorithm");
+                    algorithmSelect.innerHTML = ""; // Clear existing options
+
+                    // Populate the <select> with options
+                    for (const key in data.algorithms) {
+                        const option = document.createElement("option");
+                        option.value = key;
+                        option.textContent = data.algorithms[key];
+                        algorithmSelect.appendChild(option);
+                    }
+
+                    // After the algorithm list is fetched and displayed, update the information box
+                    updateInformationBox()          // Show the description of the first one (selected as default)
+                    fetchAndUpdateRequirements()    // Show the necessary input fields in the form
+                })
+                .catch(error => console.error('Error fetching algorithms:', error));
+        });
+
+        // When algorithm change => Fetch the requirments, update the UI and the info-box
+        document.getElementById('algorithm').addEventListener('change', function() {
+            fetchAndUpdateRequirements()    // Get requirements and update the additional requirement's fields
+            updateInformationBox()          // Change info-box
+        });
+
+        // When operation change => Fetch the requirments and update the UI
+        document.getElementById('operation').addEventListener('change', function() {
+            fetchAndUpdateRequirements()    // Get requirements and update the additional requirement's fields
+
+            // Change the text under the image section
+            if (this.value === 'decryption')
+                document.getElementById("fileHint").textContent = "For decryption, upload two images."
+            else
+                document.getElementById("fileHint").textContent = "For encryption, upload one image."
+        })
+
+        function updateInformationBox() {
+            const selectedAlgorithm = document.getElementById("algorithm").value
+
+            // Fetch algorithm description and related links from the server
+            fetch(`/api/algorithm_description/${selectedAlgorithm}`)
+                .then(response => response.json())
+                .then(data => {
+                    const infoBox = document.getElementById('infoBox')
+                    const infoMessage = document.getElementById('infoMessage')
+                    const infoLinksContainer = document.getElementById('infoLinksContainer')
+
+                    // Update info message with algorithm details
+                    infoMessage.textContent = data.text
+                    infoLinksContainer.innerHTML = "" // Clear previous links
+
+                    // Display associated links if available
+                    if (data.links.length > 0) {
+                        data.links.forEach(link => {
+                            const linkElement = document.createElement('a')
+                            linkElement.href = link.url
+                            linkElement.target = "_blank"
+                            linkElement.textContent = link.text
+                            linkElement.style.marginRight = "10px"
+                            infoLinksContainer.appendChild(linkElement)
+                        })
+                        infoLinksContainer.style.display = 'block'
+                    } else {
+                        infoLinksContainer.style.display = 'none'
+                    }
+
+                    // Show the information box
+                    infoBox.style.display = 'block'
+                })
+                .catch(error => {
+                    console.error("Error fetching algorithm description:", error)
+                })
+        }
+
+        function fetchAndUpdateRequirements() {
+            const selectedAlgorithm = document.getElementById("algorithm").value;
+            const selectedOperation = document.getElementById("operation").value; // Select for operation type
+
+            fetch(`/api/algorithm_requirements/${selectedAlgorithm}/${selectedOperation}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Clear previous file inputs
+                    const inputImagesContainer = document.getElementById("input_images");
+                    inputImagesContainer.innerHTML = "";
+
+                    // Generate and add input file elements based on num_images
+                    for (let i = 1; i <= data.num_images; i++) {
+                        const fileInput = document.createElement("input");
+                        fileInput.type = "file";
+                        fileInput.name = `image${i}`;
+                        fileInput.id = `image${i}`;
+                        fileInput.accept = "image/*";
+                        fileInput.required = true; // Make required
+
+                        // Append file input to the div
+                        inputImagesContainer.appendChild(fileInput);
+                    }
+
+                    // Locate the select element
+                    const operationSelect = document.getElementById("operation");
+
+                    // Remove previous dynamically inserted elements
+                    let nextElement = operationSelect.nextElementSibling;
+                    while (nextElement && (nextElement.tagName === "LABEL" || nextElement.tagName === "INPUT" || nextElement.tagName === "SELECT")) {
+                        let toRemove = nextElement;
+                        nextElement = nextElement.nextElementSibling;
+                        toRemove.remove();
+                    }
+
+                    // Generate and insert form elements for parameters immediately after the select element
+                    Object.entries(data.parameters).forEach(([paramKey, paramConfig]) => {
+                        // Create the label
+                        const labelElement = document.createElement("label");
+                        labelElement.htmlFor = paramKey;
+                        labelElement.textContent = paramConfig.label;
+
+                        // Create the input field based on its type
+                        let inputElement;
+                        if (paramConfig.type === "number") {
+                            inputElement = document.createElement("input");
+                            inputElement.type = "number";
+                            inputElement.name = paramKey;
+                            inputElement.id = paramKey;
+                            inputElement.value = paramConfig.default; // Set default value
+                            inputElement.required = true;
+                        }
+                        else if (paramConfig.type === "select") {
+                            inputElement = document.createElement("select");
+                            inputElement.name = paramKey;
+                            inputElement.id = paramKey;
+                            inputElement.required = true; // Make required
+
+                            paramConfig.options.forEach(optionValue => {
+                                const option = document.createElement("option");
+                                option.value = optionValue;
+                                option.textContent = optionValue;
+                                if (optionValue === paramConfig.default) {
+                                    option.selected = true;
+                                }
+                                inputElement.appendChild(option);
+                            });
+                        }
+                        // Here it is possible to add other type of requirements for new schemes
+
+                        // Insert label and input directly after the operation select element
+                        operationSelect.insertAdjacentElement("afterend", inputElement);
+                        inputElement.insertAdjacentElement("beforebegin", labelElement);
+                    });
+                })
+                .catch(error => console.error('Error fetching algorithm requirements:', error));
+        }
+
+        // Display circular loader when form is submitted
+        document.getElementById('cryptoForm').addEventListener('submit', function () {
+            document.getElementById('loader').style.display = 'flex'
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+site_name: VisualCrypto Documentation
+site_description: Documentation of VisualCrypto a repository that contains Visual Secret Sharing Schemes
+site_url: https://coduri.cc
+site_author: Christian Coduri
+repo_url: https://github.com/coduri/VisualCrypto
+repo_name: coduri/VisualCrypto
+
+theme:
+  name: material
+  language: en
+  logo: assets/ghost.svg
+  favicon: assets/ghost.svg
+
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.instant.prefetch
+    - navigation.footer
+
+  palette:
+    # Dark Mode
+    - scheme: slate
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
+      primary: blue
+
+    # Light Mode
+    - scheme: default
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+      primary: blue
+
+nav:
+    - 'User Guide':
+          - 'Introduction to VSS Schemes': index.md
+          - 'Getting Started': pages/getting_started.md
+    - 'Developer Guide':
+          - 'Project Overview': pages/overview.md
+          - 'Contributing': pages/contributing.md
+          - 'Web Interface Integration': pages/web_interface_integration.md
+          - 'API Reference': pages/api_reference.md
+
+plugins: []
+
+markdown_extensions:
+  # For Admonitions
+  - admonition
+  - pymdownx.details
+
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # For diagrams
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/coduri
+
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/christiancoduri/

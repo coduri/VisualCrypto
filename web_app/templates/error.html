@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - VisualCrypto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error_style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icon.svg') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Oops! Something went wrong.</h1>
+        <p class="error-message">Error: {{ error_message }}</p>
+        <a href="{{ url_for('home') }}" class="button">Go Back to Home</a>
+    </div>
+</body>
+</html>

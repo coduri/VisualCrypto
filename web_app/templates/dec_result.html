@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decryption Result - VisualCrypto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/result_style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icon.svg') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Decryption Result</h1>
+        <div class="image-container">
+            <div>
+                <h2>Decrypted Image</h2>
+                <img src="{{ result_url }}" alt="Decrypted Image">
+                <a class="button" href="{{ result_download }}" download>Download Result</a>
+            </div>
+        </div>
+        <a class="button back-button" href="/">Back to Home</a>
+    </div>
+</body>
+</html>
