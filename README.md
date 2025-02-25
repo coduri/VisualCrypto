@@ -4,7 +4,9 @@
   </a>
 </p>
 
+<h1 align="center">VisualCrypto</h1>
 
+<p align="center">A framework for image-based secret sharing</p>
 
 <div align="center">
 
@@ -19,8 +21,6 @@
 
 
 
-
----
 
 ## Overview
 **VisualCrypto** is a Python-based framework for **Visual Secret Sharing (VSS)**, a cryptographic technique that divides a secret image into multiple shares. Each share appears as random noise and reveals no information on its own, but when combined, they reconstruct the original image.
