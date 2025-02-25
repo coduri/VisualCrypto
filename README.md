@@ -6,12 +6,11 @@
 
 <h1 align="center">VisualCrypto</h1>
 
-<p align="center">A framework for image-based secret sharing</p>
+<p align="center">A toolkit for image-based secret sharing</p>
 
 <div align="center">
 
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/downloads/)
-[![Cryptographic Secure](https://img.shields.io/badge/Cryptographic%20Secure-secrets.py-blueviolet)](https://docs.python.org/3/library/secrets.html)
 [![Documentation Available](https://img.shields.io/badge/Documentation-Available-green)](https://coduri.github.io/VisualCrypto/)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange)](https://coduri.github.io/VisualCrypto/pages/contributing/)
 [![License](https://img.shields.io/badge/License-MIT-red)](https://github.com/coduri/VisualCrypto/blob/main/LICENSE.txt)
@@ -20,22 +19,20 @@
 </div>
 
 
-
-
 ## Overview
-**VisualCrypto** is a Python-based framework for **Visual Secret Sharing (VSS)**, a cryptographic technique that divides a secret image into multiple shares. Each share appears as random noise and reveals no information on its own, but when combined, they reconstruct the original image.
+**VisualCrypto** is an open-source Python-based toolkit with a web interface designed for **Visual Secret Sharing (VSS)**, a cryptographic technique that splits a secret image into multiple shares. Each share appears as random noise and reveals no information on its own, but when combined, they reconstruct the original image.
 
 This repository primarily focuses on **(2,2)-VSS schemes**, where a secret image is split into two shares, both of which are required to reveal the hidden content.
-
 
 📌 _For more details on **VisualCrypto**, visit the [Project's Documentation](https://coduri.github.io/VisualCrypto/)._
 
 ---
 
 ## Features
-- Supports Visual Cryptography (VC) & Random Grid (RG) techniques
-- Web-based & script-based execution
-- Easily extendable for new algorithms
+- Support for Visual Cryptography (VC) & Random Grid (RG) techniques
+- Web-based & script-based execution for ease of use
+- Easily extendable to incorporate new cryptographic schemes
+- Reference-based implementation, ensuring that any scientific work derived from this repository maintains appropriate citations.
 
 ---
 
@@ -50,7 +47,7 @@ pip install -r requirements.txt
 ```
 
 ### Usage  
-You can interact with the framework in two ways:  
+You can interact with the toolkit in two ways:  
 1. **Running Python scripts**
 2. **Using the Web Interface**
 
@@ -100,7 +97,7 @@ If you find this project useful for your research, please consider citing:
  ```bibtex
 @misc{Coduri2025VisualCrypto,
     author = {Christian Coduri},
-    title = {VisualCrypto: A Python-based framework for image-based secret sharing},
+    title = {VisualCrypto: A Python-based toolkit for image-based secret sharing},
     year = {2025},
     publisher = {GitHub},
     url = {https://github.com/coduri/VisualCrypto},

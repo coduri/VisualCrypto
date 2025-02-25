@@ -33,11 +33,10 @@ theme:
       primary: blue
 
 nav:
-    - 'User Guide':
-          - 'Introduction to VSS Schemes': index.md
-          - 'Getting Started': pages/getting_started.md
+    - 'Index': index.md
+    - 'Introduction to VSS Schemes': pages/introductionVSS.md
+    - 'Getting Started': pages/getting_started.md
     - 'Developer Guide':
-          - 'Project Overview': pages/overview.md
           - 'Contributing': pages/contributing.md
           - 'Web Interface Integration': pages/web_interface_integration.md
           - 'API Reference': pages/api_reference.md

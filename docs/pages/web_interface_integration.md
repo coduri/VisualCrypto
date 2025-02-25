@@ -126,7 +126,7 @@ Defines how the Flask app interacts with your algorithm.
             "image_type": "L"     # Image mode (e.g., 'L' for grayscale, '1' for binary)
         }
     ```
-The `get_config()` function acts as a bridge between individual algorithms and the framework. It encapsulates all required metadata, descriptions, functions, and parameters within a single dictionary, allowing the Flask app to interact with the scheme simply by accessing `get_config()`.
+The `get_config()` function acts as a bridge between individual algorithms and the toolkit. It encapsulates all required metadata, descriptions, functions, and parameters within a single dictionary, allowing the Flask app to interact with the scheme simply by accessing `get_config()`.
 
 ---
 
