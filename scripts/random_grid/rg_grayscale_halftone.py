@@ -1,5 +1,6 @@
 from PIL import Image
 import numpy as np
+import secrets
 
 
 # Returns a dictionary containing function mappings and metadata for the algorithm (used by the web interface).
@@ -62,7 +63,7 @@ def create_first_random_grid(size):
     Returns:
     numpy.ndarray: A random binary grid (0s and 1s) of the specified size.
     """
-    grid = np.random.randint(2, size=size)
+    grid = np.array([[secrets.randbelow(2) for _ in range(size[1])] for _ in range(size[0])])
     return grid
 
 

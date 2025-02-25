@@ -1,7 +1,6 @@
 from PIL import Image
-import random
 import copy
-
+import secrets
 
 # Returns a dictionary containing function mappings and metadata for the algorithm (used by the web interface).
 def get_config():
@@ -98,9 +97,10 @@ def random_col_permutation(matrix):
     n_cols = len(matrix[0])
     new_matrix = copy.deepcopy(matrix)
 
-    # Generate a random permutation of column indices
+    # Generate a random permutation of column indices.
+    # Note that: secrets.SystemRandom is a class that uses the system's cryptographic random number generator
     col_indices = list(range(n_cols))
-    random.shuffle(col_indices)
+    secrets.SystemRandom().shuffle(col_indices)
 
     # Apply the column permutation to the matrix
     for i in range(n_rows):

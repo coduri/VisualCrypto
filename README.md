@@ -4,32 +4,21 @@
   </a>
 </p>
 
-<h1 align="center">VisualCrypto</h1>
 
-<p align="center">A framework for image-based secret sharing</p>
 
-<p align="center">
-  <!-- Python Version -->
-  <a href="https://www.python.org/downloads/">
-    <img src="https://img.shields.io/badge/Python-3.8%2B-blue" alt="Python 3.8+" />
-  </a>
+<div align="center">
 
-  <!-- API Documentation -->
-  <a href="https://coduri.github.io/VisualCrypto/">
-    <img src="https://img.shields.io/badge/Documentation-Available-green" alt="Documentation Available" />
-  </a>
+[![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/downloads/)
+[![Cryptographic Secure](https://img.shields.io/badge/Cryptographic%20Secure-secrets.py-blueviolet)](https://docs.python.org/3/library/secrets.html)
+[![Documentation Available](https://img.shields.io/badge/Documentation-Available-green)](https://coduri.github.io/VisualCrypto/)
+[![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange)](https://coduri.github.io/VisualCrypto/pages/contributing/)
+[![License](https://img.shields.io/badge/License-MIT-red)](https://github.com/coduri/VisualCrypto/blob/main/LICENSE.txt)
 
-  <!-- Contributions -->
-  <a href="https://coduri.github.io/VisualCrypto/pages/contributing/">
-    <img src="https://img.shields.io/badge/Contributions-Welcome-orange" alt="Contributions Welcome" />
-  </a>
 
-  <!-- License -->
-  <a href="https://github.com/coduri/VisualCrypto/LICENSE.txt">
-    <img src="https://img.shields.io/badge/License-MIT-red" alt="License" />
-  </a>
+</div>
 
-</p>
+
+
 
 ---
 

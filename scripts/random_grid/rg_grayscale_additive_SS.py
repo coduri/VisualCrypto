@@ -1,5 +1,6 @@
 import numpy as np
 from PIL import Image
+import secrets
 
 
 # Returns a dictionary containing function mappings and metadata for the algorithm (used by the web interface).
@@ -51,7 +52,7 @@ def create_random_grid(size):
     Returns:
     numpy.ndarray: A grid filled with random integer values between 0 and 255.
     """
-    grid = np.random.randint(0, 256, size=size)
+    grid = np.array([[secrets.randbelow(256) for _ in range(size[1])] for _ in range(size[0])], dtype=np.uint8)
     return grid
 
 
@@ -103,13 +104,13 @@ def encrypt(image):
     """
     img_array = np.array(image).astype(int)  # Convert PIL Image to numpy array and convert to int type
 
-    # Create the first random grid
+    # Create the first random grid and convert it to PIL Image
     grid1 = create_random_grid(img_array.shape)
-    grid1_image = Image.fromarray(grid1.astype(np.uint8))  # Convert grid to PIL Image
+    grid1_image = Image.fromarray(grid1)
 
-    # Create the second grid (difference grid)
+    # Create the second random grid and convert it to PIL Image
     grid2 = create_difference_grid(img_array, grid1)
-    grid2_image = Image.fromarray(grid2.astype(np.uint8))  # Convert grid to PIL Image
+    grid2_image = Image.fromarray(grid2.astype(np.uint8))  # np.uint8 causes wrapping (modulo 256) for negative values
 
     return grid1_image, grid2_image
 
