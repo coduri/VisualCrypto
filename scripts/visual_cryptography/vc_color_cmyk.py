@@ -5,7 +5,7 @@ from scripts.visual_cryptography.vc_grayscale_halftone import encrypt as encrypt
 # Returns a dictionary containing function mappings and metadata for the algorithm (used by the web interface).
 def get_config():
     return {
-        "name": "VC - Color CMYK",
+        "name": "VC - Color (CMYK) Halftone",
         "description": get_description(),
         "requirements": get_requirements(),
         "encrypt": encrypt,

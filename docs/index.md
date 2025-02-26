@@ -27,7 +27,7 @@ Below is an overview of the project's architecture:
 
 ### Key Components
 - **`index.html`**: The main frontend interface where users select algorithms, perform operations, and upload images.
-- **`app.py`**: A Flask-based web server providing API endpoints for frontend interactions (see [API Reference](api_reference.md) for details).
+- **`app.py`**: A Flask-based web server providing API endpoints for frontend interactions (see [API Reference](pages/api_reference.md) for details).
 - **`algo_interface.py`**: An interface to access various visual secret sharing schemes. It maintains a dictionary that maps scheme names to their respective functions.
 - **`scripts/`**: Contains the core implementations of visual cryptography and random grid schemes.
       - `visual_cryptography/`: Contains different Visual Cryptography implementations.
