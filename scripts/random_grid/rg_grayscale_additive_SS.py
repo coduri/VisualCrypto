@@ -58,7 +58,7 @@ def create_random_grid(size):
 # Function to create a difference grid by subtracting the image from the random grid
 def create_difference_grid(image, grid):
     """
-    Creates a difference grid by subtracting the pixel values of the input image from the random grid.
+    Creates a difference grid by subtracting the pixel values of the random grid image from the input image.
 
     Parameters:
     image (numpy.ndarray): The binary image array (as a numpy array) to subtract from the grid.
@@ -73,7 +73,7 @@ def create_difference_grid(image, grid):
 # Function to overlay two grids by performing subtraction
 def decrypt(image1, image2):
     """
-    Combines two grids by subtracting the second grid from the first.
+    Combines two grids by adding the second grid to the first.
 
     Parameters:
     image1 (PIL.Image.Image): The first image (PIL Image object), to be converted to numpy array and processed.
