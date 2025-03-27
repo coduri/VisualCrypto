@@ -1,0 +1,18 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: VisualCrypto - A toolkit for image-based secret sharing
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - given-names: Christian
+    family-names: Coduri
+url: 'https://github.com/coduri/VisualCrypto'
+keywords:
+  - visual cryptography
+  - random grid
+  - visual secret sharing
+license: MIT
+version: 1.0.0
+date-released: '2025-02-23'

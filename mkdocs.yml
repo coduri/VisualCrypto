@@ -1,5 +1,5 @@
 site_name: VisualCrypto Documentation
-site_description: Documentation of VisualCrypto a repository that contains Visual Secret Sharing Schemes
+site_description: Documentation of VisualCrypto, a repository containing a collection of Visual Cryptography and Random Grid schemes.
 site_url: https://coduri.cc
 site_author: Christian Coduri
 repo_url: https://github.com/coduri/VisualCrypto
@@ -33,7 +33,7 @@ theme:
       primary: blue
 
 nav:
-    - 'Index': index.md
+    - 'Welcome': index.md
     - 'Introduction to VSS Schemes': pages/introductionVSS.md
     - 'Getting Started': pages/getting_started.md
     - 'Developer Guide':

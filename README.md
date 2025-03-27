@@ -13,7 +13,7 @@
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/downloads/)
 [![Documentation Available](https://img.shields.io/badge/Documentation-Available-green)](https://coduri.github.io/VisualCrypto/)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-orange)](https://coduri.github.io/VisualCrypto/pages/contributing/)
-[![License](https://img.shields.io/badge/License-MIT-red)](https://github.com/coduri/VisualCrypto/blob/main/LICENSE.txt)
+[![License](https://img.shields.io/badge/License-MIT-red)](https://github.com/coduri/VisualCrypto/blob/main/LICENSE)
 
 
 </div>

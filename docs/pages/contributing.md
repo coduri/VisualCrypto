@@ -44,13 +44,12 @@ Create a new Python script for your VSS scheme. Follow the structure of existing
             raise ValueError(f"Invalid decryption operation: {operation}. Choose 'XOR' or 'OR'.")
     ```
 
-#### **Support Functions** (Refer to [Web Interface Integration](web_interface_integration.md#required-support-functions))  
+#### **Support Functions**
 - **`get_description()`** → Provides details and references for the scheme.  
 - **`get_requirements()`** → Specifies input requirements for encryption and decryption.  
-- **`get_config()`** → Defines algorithm configurations for integration. 
+- **`get_config()`** → Defines algorithm configurations for integration.
 
-
-
+Refer to [Web Interface Integration](web_interface_integration.md#required-support-functions)
 
 ---
 
@@ -73,7 +72,6 @@ Once your script is implemented, update `algo_interface.py` by:
        "rg_new_scheme": rg_new_scheme.get_config()
    }
    ```
-
 
 ---
 
@@ -104,6 +102,6 @@ Before submitting a Pull Request:
 ---
 
 ## Thank You for Contributing!  
-Contributions to this project are greatly appreciated. For any questions, feel free to open an issue or reach out to the maintainers- Contact details can be found in the footer of this documentation.
+Contributions to this project are greatly appreciated. For any questions, feel free to open an issue or reach out to the maintainers. Contact details can be found in the footer of this documentation.
 
 ---
